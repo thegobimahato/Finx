@@ -4,7 +4,8 @@ import { useState } from "react";
 
 import { usePathname, useRouter } from "next/navigation";
 
-import { Menu } from "lucide-react";
+import { Menu05Icon } from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
 import { useMedia } from "react-use";
 
 import { Button } from "../../ui/button";
@@ -53,7 +54,12 @@ const Navigation = () => {
             size="sm"
             className="dark:bg-white dark:hover:bg-white/80"
           >
-            <Menu className="size-4 text-black" />
+            <HugeiconsIcon
+              icon={Menu05Icon}
+              size={24}
+              color="rgba(0,0,0)"
+              strokeWidth={2}
+            />
           </Button>
         </SheetTrigger>
 

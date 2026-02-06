@@ -22,11 +22,13 @@ const WelcomeMsg = () => {
       </h2>
 
       {/* Subtext */}
-      <p className="text-sm text-white/70 lg:text-lg">
-        Here&apos;s a quick overview of your finances report.
+      <p className="text-base text-white/70 lg:text-lg">
+        Your financial summary overview
       </p>
     </div>
   );
 };
+
+
 
 export default WelcomeMsg;
