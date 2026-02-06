@@ -2,7 +2,7 @@ import { ClerkLoaded, ClerkLoading, UserButton } from "@clerk/nextjs";
 
 import { Spinner } from "../../ui/spinner";
 import { ThemeToggle } from "../../ui/theme-toggle";
-import WelcomeMsg from "../welcome-msg";
+import WelcomeMsg from "./welcome-msg";
 import HeaderLogo from "./header-logo";
 import Navigation from "./navigation";
 

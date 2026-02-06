@@ -4,6 +4,7 @@ import { fontSans } from "./fonts/fonts";
 import "./globals.css";
 
 import { ClerkThemeProvider } from "@/components/providers/clerk-theme-provider";
+import { QueryProvider } from "@/components/providers/query-provider";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 
 export const metadata: Metadata = {
@@ -29,7 +30,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <ClerkThemeProvider>{children}</ClerkThemeProvider>
+          <ClerkThemeProvider>
+            <QueryProvider>{children}</QueryProvider>
+          </ClerkThemeProvider>
         </ThemeProvider>
       </body>
     </html>
