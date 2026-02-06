@@ -1,5 +1,9 @@
+import { ClerkLoaded, ClerkLoading, UserButton } from "@clerk/nextjs";
+
+import { Spinner } from "../ui/spinner";
 import HeaderLogo from "./header-logo";
 import Navigation from "./navigation";
+import WelcomeMsg from "./welcome-msg";
 
 const Header = () => {
   return (
@@ -14,7 +18,17 @@ const Header = () => {
 
             <Navigation />
           </div>
+
+          <ClerkLoaded>
+            <UserButton />
+          </ClerkLoaded>
+
+          <ClerkLoading>
+            <Spinner />
+          </ClerkLoading>
         </div>
+
+        <WelcomeMsg />
       </div>
     </header>
   );
