@@ -1,4 +1,4 @@
-import Header from "@/components/dashboard/header";
+import Header from "@/components/dashboard/header/header";
 
 type Props = {
   children: React.ReactNode;

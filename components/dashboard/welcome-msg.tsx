@@ -8,16 +8,16 @@ const WelcomeMsg = () => {
   return (
     <div className="mb-6 space-y-2">
       {/* Heading */}
-      <h2 className="text-2xl font-semibold tracking-tight text-white lg:text-4xl">
+      <h2 className="flex gap-3 text-2xl font-semibold tracking-tight text-white lg:text-4xl">
+        <p className="">Welcome back,</p>
         {isLoaded ? (
           <>
-            Welcome back
             {user?.firstName && (
-              <span className="text-white/90">, {user.firstName}</span>
+              <span className="text-white/90">{user.firstName}</span>
             )}
           </>
         ) : (
-          <span className="inline-block h-8 w-48 animate-pulse rounded-md bg-white/20 lg:h-9" />
+          <span className="inline-block h-8 w-32 animate-pulse rounded-full bg-white/20 lg:h-9 lg:w-40" />
         )}
       </h2>
 
