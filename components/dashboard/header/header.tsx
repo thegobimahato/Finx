@@ -1,10 +1,12 @@
 import { ClerkLoaded, ClerkLoading, UserButton } from "@clerk/nextjs";
 
-import { Spinner } from "../../ui/spinner";
 import { ThemeToggle } from "../../ui/theme-toggle";
-import WelcomeMsg from "./welcome-msg";
 import HeaderLogo from "./header-logo";
 import Navigation from "./navigation";
+import WelcomeMsg from "./welcome-msg";
+
+import { Skeleton } from "@/components/ui/skeleton";
+import { Spinner } from "@/components/ui/spinner";
 
 const Header = () => {
   return (
@@ -22,18 +24,24 @@ const Header = () => {
           </div>
 
           {/* Right side: theme toggle and authenticated user menu */}
-          <div className="flex items-center justify-center gap-3">
+          <div className="flex items-center justify-center gap-3 overflow-hidden">
             <ThemeToggle />
 
-            {/* Show user button when Clerk is ready */}
-            <ClerkLoaded>
-              <UserButton />
-            </ClerkLoaded>
+            <div className="relative size-7">
+              {/* Loading state */}
+              <ClerkLoading>
+                <Skeleton className="absolute inset-0 flex items-center justify-center rounded-full">
+                  <Spinner className="size-4.5 text-white/80" />
+                </Skeleton>
+              </ClerkLoading>
 
-            {/* Fallback spinner while Clerk loads */}
-            <ClerkLoading>
-              <Spinner />
-            </ClerkLoading>
+              {/* Loaded state */}
+              <ClerkLoaded>
+                <div className="animate-in fade-in zoom-in-95 absolute inset-0 duration-200 ease-out">
+                  <UserButton />
+                </div>
+              </ClerkLoaded>
+            </div>
           </div>
         </div>
 
