@@ -10,7 +10,7 @@ import { Spinner } from "@/components/ui/spinner";
 
 const Header = () => {
   return (
-    <header className="relative bg-linear-to-b from-violet-400 to-violet-500 p-4 pb-36 lg:px-14 lg:py-8">
+    <header className="relative bg-linear-to-b from-violet-400 to-violet-500 p-4 pb-32 lg:px-14">
       {/* Background noise overlay for subtle texture */}
       <div className="pointer-events-none absolute inset-0 bg-[url('/noise.png')] bg-repeat opacity-[0.60] mix-blend-multiply" />
 
