@@ -4,13 +4,13 @@ import Link from "next/link";
 const HeaderLogo = () => {
   return (
     <Link href={"/"}>
-      <div className="group mb-1 hidden items-center lg:flex">
+      <div className="relative mb-1 hidden h-9 w-18.75 items-center lg:flex">
         <Image
-          src={"./logo-full.svg"}
+          src="/logo-full.svg"
           alt="Finx logo"
-          width={75}
-          height={40}
+          fill
           priority
+          className="object-contain"
         />
       </div>
     </Link>

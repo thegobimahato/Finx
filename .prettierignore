@@ -1,8 +1,26 @@
+# Dependencies
 node_modules
+
+# Next.js build output
 .next
+out
 dist
 build
-.env
 
-public
-drizzle
+# Environment files
+.env
+.env.*
+!.env.example
+
+# ORM generated files
+drizzle/migrations
+prisma/migrations
+
+# Logs
+*.log
+
+# Coverage
+coverage
+
+# OS / editor junk
+.DS_Store

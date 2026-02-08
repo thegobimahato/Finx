@@ -49,7 +49,7 @@ const AccountsPage = () => {
 
   return (
     <div className="mx-auto -mt-24 w-full max-w-screen-2xl px-3 pb-10 lg:px-14">
-      <Card className="border-none drop-shadow-sm">
+      <Card className="border-accent border-2 drop-shadow-sm">
         <CardHeader className="flex flex-col gap-y-4 md:flex-row md:items-center md:justify-between">
           <div>
             <CardTitle className="text-xl font-semibold">
@@ -60,13 +60,16 @@ const AccountsPage = () => {
             </p>
           </div>
 
-          <Button onClick={newAccount.onOpen} className="w-full gap-2 md:w-fit">
+          <Button
+            onClick={newAccount.onOpen}
+            className="w-full gap-2 border-2 transition hover:border-dotted md:w-fit"
+          >
             <HugeiconsIcon
               icon={AddCircleHalfDotIcon}
               size={18}
               strokeWidth={1.5}
             />
-            New account
+            New Account
           </Button>
         </CardHeader>
 

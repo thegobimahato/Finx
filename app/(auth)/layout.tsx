@@ -16,11 +16,12 @@ export default function AuthLayout({
       <div className="relative hidden h-full items-center justify-center bg-linear-to-b from-violet-400 to-violet-500 text-center lg:flex lg:flex-col">
         <div className="w-fit rounded bg-black/60 px-0.5 py-1">
           <Image
-            src={"./logo-full.svg"}
+            src="/logo-full.svg"
             alt="Finx logo"
-            width={100}
+            width={75}
             height={40}
             priority
+            className="h-auto w-18.75"
           />
         </div>
 
