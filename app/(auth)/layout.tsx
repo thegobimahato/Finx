@@ -24,7 +24,7 @@ export default function AuthLayout({
           />
         </div>
 
-        <p className="mt-6 max-w-md text-lg text-muted/90">
+        <p className="text-muted/90 mt-6 max-w-md text-lg">
           Finx is a modern personal finance app to track expenses, manage bank
           accounts, and understand your cash flow.
         </p>

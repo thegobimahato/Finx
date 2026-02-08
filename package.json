@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "lint": "eslint",
+    "lint:fix": "next lint --fix",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "bun ./scripts/migrate.ts",
     "db:studio": "drizzle-kit studio"

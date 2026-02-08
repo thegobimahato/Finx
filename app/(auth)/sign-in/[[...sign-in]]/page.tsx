@@ -1,5 +1,6 @@
-import { ClerkLoaded, ClerkLoading, SignIn } from "@clerk/nextjs";
 import type { Metadata } from "next";
+
+import { ClerkLoaded, ClerkLoading, SignIn } from "@clerk/nextjs";
 
 import { Spinner } from "@/components/ui/spinner";
 

@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Spinner } from "@/components/ui/spinner";
+
 import { insertAccountSchema } from "@/db/schema";
 
 const formSchema = insertAccountSchema.pick({
@@ -28,7 +29,8 @@ type Props = {
   defaultValues?: FormValues;
   onSubmit: (values: FormValues) => void;
   onDelete?: () => void;
-  disabled?: boolean;
+  isEditing?: boolean;
+  isDeleting?: boolean;
 };
 
 const AccountForm = ({
@@ -36,7 +38,8 @@ const AccountForm = ({
   defaultValues,
   onSubmit,
   onDelete,
-  disabled,
+  isEditing,
+  isDeleting,
 }: Props) => {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -65,7 +68,7 @@ const AccountForm = ({
               <FormLabel>Name</FormLabel>
               <FormControl>
                 <Input
-                  disabled={disabled}
+                  disabled={isEditing}
                   placeholder="e.g. Cash, Bank, Credit Card"
                   {...field}
                 />
@@ -75,23 +78,27 @@ const AccountForm = ({
           )}
         />
 
-        <Button disabled={disabled} className="w-full">
-          {disabled && <Spinner className="size-4" />}
+        <Button
+          type="submit"
+          disabled={isEditing || isDeleting}
+          className="w-full"
+        >
+          {isEditing && <Spinner className="size-4" />}
           {id ? "Save changes" : "Create account"}
         </Button>
 
         {!!id && (
           <Button
             type="button"
-            disabled={disabled}
+            disabled={isDeleting}
             onClick={handleDelete}
             className="w-full"
-            variant={"outline"}
+            variant="outline"
           >
             <HugeiconsIcon
               icon={Delete03Icon}
-              size={24}
               color="oklch(70.4% 0.191 22.216)"
+              size={24}
               strokeWidth={1.5}
             />
             <span className="text-red-400">Delete account</span>

@@ -8,7 +8,10 @@ import { AnimatePresence, motion } from "motion/react";
 
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
+
 import { client } from "@/lib/hono";
+
+import Actions from "./actions";
 
 export type ResponseType = InferResponseType<
   typeof client.api.accounts.$get,
@@ -42,14 +45,14 @@ export const columns: ColumnDef<ResponseType>[] = [
   {
     accessorKey: "name",
     header: ({ column }) => {
-      const isSorted = column.getIsSorted(); // false | "asc" | "desc"
+      const isSorted = column.getIsSorted();
 
       return (
         <Button
           variant="ghost"
           size="sm"
           onClick={() => column.toggleSorting(isSorted === "asc")}
-          className="flex items-center gap-2 -ml-3"
+          className="-ml-3 flex items-center gap-2"
         >
           <span>Name</span>
 
@@ -89,5 +92,9 @@ export const columns: ColumnDef<ResponseType>[] = [
         </Button>
       );
     },
+  },
+  {
+    id: "actions",
+    cell: ({ row }) => <Actions id={row.original.id} />,
   },
 ];

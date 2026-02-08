@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 
-import { fontSans } from "./fonts/fonts";
-import "./globals.css";
-
 import { ClerkThemeProvider } from "@/components/providers/clerk-theme-provider";
 import { QueryProvider } from "@/components/providers/query-provider";
 import { SheetProvider } from "@/components/providers/sheet-provider";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
+
+import "./globals.css";
+
+import { fontSans } from "./fonts/fonts";
 
 export const metadata: Metadata = {
   title: {

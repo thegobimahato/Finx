@@ -1,9 +1,5 @@
 import { z } from "zod";
 
-import { useCreateAccount } from "../api/use-create-account";
-import { useNewAccount } from "../hooks/use-new-account";
-import AccountForm from "./account-form";
-
 import {
   Sheet,
   SheetContent,
@@ -11,6 +7,11 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
+
+import { useCreateAccount } from "../api/use-create-account";
+import { useNewAccount } from "../hooks/use-new-account";
+import AccountForm from "./account-form";
+
 import { insertAccountSchema } from "@/db/schema";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -45,7 +46,7 @@ const NewAccountSheet = () => {
 
         <AccountForm
           onSubmit={onSubmit}
-          disabled={mutation.isPending}
+          isEditing={mutation.isPending}
           defaultValues={{
             name: "",
           }}

@@ -3,16 +3,17 @@
 import { AddCircleHalfDotIcon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 
-import { columns } from "./columns";
+import { useBulkDeleteAccounts } from "@/features/accounts/api/use-bulk-delete";
+import { useGetAccounts } from "@/features/accounts/api/use-get-accounts";
+import { useNewAccount } from "@/features/accounts/hooks/use-new-account";
 
 import { DataTable } from "@/components/dashboard/accounts/data-table";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Spinner } from "@/components/ui/spinner";
-import { useBulkDeleteAccounts } from "@/features/accounts/api/use-bulk-delete";
-import { useGetAccounts } from "@/features/accounts/api/use-get-accounts";
-import { useNewAccount } from "@/features/accounts/hooks/use-new-account";
+import { Spinner2 } from "@/components/ui/spinner2";
+
+import { columns } from "./columns";
 
 const AccountsPage = () => {
   const newAccount = useNewAccount();
@@ -38,7 +39,7 @@ const AccountsPage = () => {
 
           <CardContent>
             <div className="flex h-84 w-full items-center justify-center">
-              <Spinner className="size-6 text-black dark:text-white" />
+              <Spinner2 className="size-6" />
             </div>
           </CardContent>
         </Card>

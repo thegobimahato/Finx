@@ -1,12 +1,12 @@
 import { ClerkLoaded, ClerkLoading, UserButton } from "@clerk/nextjs";
 
+import { Skeleton } from "@/components/ui/skeleton";
+import { Spinner } from "@/components/ui/spinner";
+
 import { ThemeToggle } from "../../ui/theme-toggle";
 import HeaderLogo from "./header-logo";
 import Navigation from "./navigation";
 import WelcomeMsg from "./welcome-msg";
-
-import { Skeleton } from "@/components/ui/skeleton";
-import { Spinner } from "@/components/ui/spinner";
 
 const Header = () => {
   return (

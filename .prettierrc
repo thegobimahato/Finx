@@ -3,25 +3,45 @@
     "@trivago/prettier-plugin-sort-imports",
     "prettier-plugin-tailwindcss"
   ],
+
   "importOrder": [
     "^react$",
+    "^react/(.*)$",
+    "^next$",
     "^next/(.*)$",
     "^next/font/(.*)$",
+
     "^@?\\w",
 
-    "^@features/(.*)$",
-    "^@components/(.*)$",
-    "^@hooks/(.*)$",
-    "^@lib/(.*)$",
-    "^@utils/(.*)$",
-    "^@store/(.*)$",
-    "^@styles/(.*)$",
+    "^lucide-react$",
+    "^@hugeicons/(.*)$",
+
+    "^drizzle-orm$",
+    "^drizzle-orm/(.*)$",
+    "^@/db/drizzle/(.*)$",
+
+    "^@prisma/client$",
+    "^@/db/prisma/(.*)$",
+
+    "^@/features/(.*)$",
+    "^@/actions/(.*)$",
+    "^@/services/(.*)$",
+
+    "^@/components/(.*)$",
+
+    "^@/hooks/(.*)$",
+    "^@/lib/(.*)$",
+    "^@/utils/(.*)$",
+    "^@/store/(.*)$",
+
+    "^@/styles/(.*)$",
+    "^.+\\.(css|scss)$",
+    "^.+\\.(svg|png|jpg|jpeg|gif|webp)$",
 
     "^[../]",
-    "^./",
-
-    "^.+\\.(?:svg|png|jpg|jpeg|gif)$"
+    "^./"
   ],
+
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true,
   "importOrderCaseInsensitive": true

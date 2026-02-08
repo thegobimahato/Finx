@@ -4,7 +4,7 @@ import Link from "next/link";
 const HeaderLogo = () => {
   return (
     <Link href={"/"}>
-      <div className="group hidden items-center lg:flex mb-1">
+      <div className="group mb-1 hidden items-center lg:flex">
         <Image
           src={"./logo-full.svg"}
           alt="Finx logo"
