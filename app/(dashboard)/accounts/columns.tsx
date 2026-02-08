@@ -1,19 +1,21 @@
 "use client";
 
+import { SortingAZ02Icon, SortingZA01Icon } from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
 import { ColumnDef } from "@tanstack/react-table";
-import { ArrowUpDown } from "lucide-react";
+import { InferResponseType } from "hono";
+import { AnimatePresence, motion } from "motion/react";
 
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
+import { client } from "@/lib/hono";
 
-export type Payment = {
-  id: string;
-  amount: number;
-  status: "pending" | "processing" | "success" | "failed";
-  email: string;
-};
+export type ResponseType = InferResponseType<
+  typeof client.api.accounts.$get,
+  200
+>["data"][0];
 
-export const columns: ColumnDef<Payment>[] = [
+export const columns: ColumnDef<ResponseType>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -36,27 +38,56 @@ export const columns: ColumnDef<Payment>[] = [
     enableSorting: false,
     enableHiding: false,
   },
+
   {
-    accessorKey: "status",
-    header: "Status",
-  },
-  {
-    accessorKey: "email",
+    accessorKey: "name",
     header: ({ column }) => {
+      const isSorted = column.getIsSorted(); // false | "asc" | "desc"
+
       return (
         <Button
           variant="ghost"
-          size={"sm"}
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          size="sm"
+          onClick={() => column.toggleSorting(isSorted === "asc")}
+          className="flex items-center gap-2 -ml-3"
         >
-          Email
-          <ArrowUpDown className="size" />
+          <span>Name</span>
+
+          <AnimatePresence mode="wait" initial={false}>
+            {isSorted === "asc" && (
+              <motion.span
+                key="asc"
+                initial={{ opacity: 0, y: 2 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -2 }}
+                transition={{ duration: 0.12, ease: "easeOut" }}
+              >
+                <HugeiconsIcon
+                  icon={SortingAZ02Icon}
+                  size={16}
+                  strokeWidth={1.5}
+                />
+              </motion.span>
+            )}
+
+            {isSorted === "desc" && (
+              <motion.span
+                key="desc"
+                initial={{ opacity: 0, y: 2 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -2 }}
+                transition={{ duration: 0.12, ease: "easeOut" }}
+              >
+                <HugeiconsIcon
+                  icon={SortingZA01Icon}
+                  size={16}
+                  strokeWidth={1.5}
+                />
+              </motion.span>
+            )}
+          </AnimatePresence>
         </Button>
       );
     },
-  },
-  {
-    accessorKey: "amount",
-    header: "Amount",
   },
 ];

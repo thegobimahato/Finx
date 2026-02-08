@@ -27,6 +27,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { useConfirm } from "@/hooks/use-confirm";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -40,9 +41,13 @@ export function DataTable<TData, TValue>({
   columns,
   data,
   filterKey,
-  // onDelete,
+  onDelete,
   disabled,
 }: DataTableProps<TData, TValue>) {
+  const [ConfirmDialog, confirm] = useConfirm(
+    "Are you sure ?",
+    "You are about to perform a bulk delete.",
+  );
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     [],
@@ -69,7 +74,9 @@ export function DataTable<TData, TValue>({
 
   return (
     <div>
-      <div className="flex items-center py-4 gap-3">
+      <ConfirmDialog />
+      
+      <div className="flex items-center gap-3 py-4">
         <Input
           placeholder={`Filter ${filterKey}...`}
           value={(table.getColumn(filterKey)?.getFilterValue() as string) ?? ""}
@@ -84,6 +91,14 @@ export function DataTable<TData, TValue>({
             disabled={disabled}
             variant={"outline"}
             className="ml-auto text-sm font-normal"
+            onClick={async () => {
+              const ok = await confirm();
+
+              if (ok) {
+                onDelete(table.getFilteredSelectedRowModel().rows);
+                table.resetRowSelection();
+              }
+            }}
           >
             <HugeiconsIcon
               icon={Delete03Icon}
@@ -118,7 +133,7 @@ export function DataTable<TData, TValue>({
               </TableRow>
             ))}
           </TableHeader>
-          
+
           <TableBody>
             {table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (

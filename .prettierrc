@@ -9,8 +9,10 @@
     "^next/font/(.*)$",
     "^@?\\w",
 
+    "^@features/(.*)$",
     "^@components/(.*)$",
     "^@hooks/(.*)$",
+    "^@lib/(.*)$",
     "^@utils/(.*)$",
     "^@store/(.*)$",
     "^@styles/(.*)$",

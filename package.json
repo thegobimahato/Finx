@@ -28,7 +28,6 @@
     "dotenv": "^17.2.4",
     "drizzle-orm": "^0.45.1",
     "drizzle-zod": "^0.8.3",
-    "framer-motion": "^12.31.2",
     "hono": "^4.11.7",
     "lucide-react": "^0.563.0",
     "motion": "^12.31.3",
